@@ -91,7 +91,7 @@ const Index = () => {
                   isLatest={index === messages.length - 1}
                 />
                 {message.listings && message.listings.length > 0 && (
-                  <div className="mt-3 mb-4 pl-11">
+                  <div className="mb-4 pl-11">
                     <ScrollArea className="w-full whitespace-nowrap rounded-lg">
                       <div className="flex gap-3 pb-3">
                         {message.listings.map((listing, listingIndex) => (
