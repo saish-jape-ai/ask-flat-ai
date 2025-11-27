@@ -33,94 +33,93 @@ export const PropertyCard = ({ property, index }: PropertyCardProps) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="bg-card rounded-2xl border border-border overflow-hidden hover:shadow-lg transition-all duration-300"
+      className="bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg transition-all duration-300 h-full"
       style={{ boxShadow: "var(--shadow-card)" }}
     >
-      <div className="bg-gradient-to-br from-primary/5 to-accent/5 p-4 border-b border-border">
-        <div className="flex items-start justify-between mb-2">
-          <div>
-            <h3 className="font-semibold text-lg text-foreground">{property.building_name}</h3>
-            <div className="flex items-center gap-1 text-muted-foreground text-sm mt-1">
-              <MapPin className="w-3.5 h-3.5" />
-              <span>
+      <div className="bg-gradient-to-br from-primary/5 to-accent/5 p-3 border-b border-border">
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex-1 min-w-0">
+            <h3 className="font-semibold text-base text-foreground truncate">{property.building_name}</h3>
+            <div className="flex items-center gap-1 text-muted-foreground text-xs mt-1">
+              <MapPin className="w-3 h-3 flex-shrink-0" />
+              <span className="truncate">
                 {property.area}, {property.city}
               </span>
             </div>
           </div>
-          <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">
+          <div className="bg-primary/10 text-primary px-2 py-0.5 rounded-full text-[10px] font-medium whitespace-nowrap">
             {property.status}
           </div>
         </div>
       </div>
 
-      <div className="p-4 space-y-3">
-        <div className="grid grid-cols-2 gap-3">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-              <Home className="w-4 h-4 text-primary" />
+      <div className="p-3 space-y-2.5">
+        <div className="grid grid-cols-2 gap-2">
+          <div className="flex items-center gap-1.5">
+            <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <Home className="w-3.5 h-3.5 text-primary" />
             </div>
-            <div>
-              <p className="text-xs text-muted-foreground">Type</p>
-              <p className="text-sm font-medium">{property.bhk}</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-              <Layers className="w-4 h-4 text-primary" />
-            </div>
-            <div>
-              <p className="text-xs text-muted-foreground">Area</p>
-              <p className="text-sm font-medium">{property.sqft} sqft</p>
+            <div className="min-w-0">
+              <p className="text-[10px] text-muted-foreground">Type</p>
+              <p className="text-xs font-medium truncate">{property.bhk}</p>
             </div>
           </div>
-        </div>
-
-        <div className="flex items-baseline gap-2 pt-2 border-t border-border">
-          <DollarSign className="w-5 h-5 text-accent" />
-          <div>
-            <span className="text-2xl font-bold text-foreground">₹{property.rent.toLocaleString()}</span>
-            <span className="text-sm text-muted-foreground">/month</span>
+          <div className="flex items-center gap-1.5">
+            <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <Layers className="w-3.5 h-3.5 text-primary" />
+            </div>
+            <div className="min-w-0">
+              <p className="text-[10px] text-muted-foreground">Area</p>
+              <p className="text-xs font-medium truncate">{property.sqft} sqft</p>
+            </div>
           </div>
         </div>
 
-        <div className="text-xs text-muted-foreground pt-1">
+        <div className="flex items-baseline gap-1.5 pt-1.5 border-t border-border">
+          <DollarSign className="w-4 h-4 text-accent flex-shrink-0" />
+          <div className="min-w-0">
+            <span className="text-xl font-bold text-foreground">₹{property.rent.toLocaleString()}</span>
+            <span className="text-xs text-muted-foreground">/month</span>
+          </div>
+        </div>
+
+        <div className="text-[10px] text-muted-foreground">
           Deposit: ₹{property.deposit.toLocaleString()}
         </div>
 
         {amenitiesList.length > 0 && (
-          <div className="pt-2">
-            <p className="text-xs text-muted-foreground mb-2">Amenities</p>
-            <div className="flex flex-wrap gap-1.5">
-              {amenitiesList.slice(0, 4).map((amenity, idx) => (
+          <div className="pt-1.5">
+            <p className="text-[10px] text-muted-foreground mb-1.5">Amenities</p>
+            <div className="flex flex-wrap gap-1">
+              {amenitiesList.slice(0, 3).map((amenity, idx) => (
                 <span
                   key={idx}
-                  className="text-xs bg-secondary text-secondary-foreground px-2 py-1 rounded-md"
+                  className="text-[10px] bg-secondary text-secondary-foreground px-1.5 py-0.5 rounded"
                 >
                   {amenity}
                 </span>
               ))}
-              {amenitiesList.length > 4 && (
-                <span className="text-xs bg-secondary text-secondary-foreground px-2 py-1 rounded-md">
-                  +{amenitiesList.length - 4} more
+              {amenitiesList.length > 3 && (
+                <span className="text-[10px] bg-secondary text-secondary-foreground px-1.5 py-0.5 rounded">
+                  +{amenitiesList.length - 3}
                 </span>
               )}
             </div>
           </div>
         )}
 
-        <div className="pt-3 border-t border-border">
-          <div className="flex items-center justify-between text-xs text-muted-foreground mb-3">
-            <div className="flex items-center gap-1">
-              <UserIcon className="w-3.5 h-3.5" />
-              <span>{property.owner_name}</span>
-            </div>
+        <div className="pt-2 border-t border-border">
+          <div className="flex items-center gap-1 text-[10px] text-muted-foreground mb-2">
+            <UserIcon className="w-3 h-3 flex-shrink-0" />
+            <span className="truncate">{property.owner_name}</span>
           </div>
           <Button
             variant="default"
-            className="w-full"
+            size="sm"
+            className="w-full text-xs h-8"
             onClick={() => window.open(`tel:${property.owner_phone}`)}
           >
-            <Phone className="w-4 h-4 mr-2" />
+            <Phone className="w-3 h-3 mr-1.5" />
             Contact Owner
           </Button>
         </div>

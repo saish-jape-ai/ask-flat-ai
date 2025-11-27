@@ -91,11 +91,11 @@ const Index = () => {
                   isLatest={index === messages.length - 1}
                 />
                 {message.listings && message.listings.length > 0 && (
-                  <div className="my-6 pl-11">
-                    <ScrollArea className="w-full whitespace-nowrap">
-                      <div className="flex gap-4 pb-4">
+                  <div className="mt-3 mb-4 pl-11">
+                    <ScrollArea className="w-full whitespace-nowrap rounded-lg">
+                      <div className="flex gap-3 pb-3">
                         {message.listings.map((listing, listingIndex) => (
-                          <div key={listing.id} className="w-[320px] flex-shrink-0">
+                          <div key={listing.id} className="w-[280px] flex-shrink-0">
                             <PropertyCard
                               property={listing}
                               index={listingIndex}
