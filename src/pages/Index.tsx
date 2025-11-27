@@ -6,6 +6,7 @@ import { PropertyCard } from "@/components/PropertyCard";
 import { WelcomeMessage } from "@/components/WelcomeMessage";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 interface Message {
   role: "user" | "assistant";
@@ -90,14 +91,20 @@ const Index = () => {
                   isLatest={index === messages.length - 1}
                 />
                 {message.listings && message.listings.length > 0 && (
-                  <div className="space-y-4 my-6 pl-11">
-                    {message.listings.map((listing, listingIndex) => (
-                      <PropertyCard
-                        key={listing.id}
-                        property={listing}
-                        index={listingIndex}
-                      />
-                    ))}
+                  <div className="my-6 pl-11">
+                    <ScrollArea className="w-full whitespace-nowrap">
+                      <div className="flex gap-4 pb-4">
+                        {message.listings.map((listing, listingIndex) => (
+                          <div key={listing.id} className="w-[320px] flex-shrink-0">
+                            <PropertyCard
+                              property={listing}
+                              index={listingIndex}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      <ScrollBar orientation="horizontal" />
+                    </ScrollArea>
                   </div>
                 )}
               </div>
