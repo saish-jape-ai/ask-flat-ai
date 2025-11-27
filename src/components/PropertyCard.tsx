@@ -53,14 +53,13 @@ export const PropertyCard = ({ property, index }: PropertyCardProps) => {
         </div>
       </div>
 
-      <div className="p-3 space-y-2.5">
+      <div className="p-3 space-y-2">
         <div className="grid grid-cols-2 gap-2">
           <div className="flex items-center gap-1.5">
             <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
               <Home className="w-3.5 h-3.5 text-primary" />
             </div>
             <div className="min-w-0">
-              <p className="text-[10px] text-muted-foreground">Type</p>
               <p className="text-xs font-medium truncate">{property.bhk}</p>
             </div>
           </div>
@@ -69,13 +68,12 @@ export const PropertyCard = ({ property, index }: PropertyCardProps) => {
               <Layers className="w-3.5 h-3.5 text-primary" />
             </div>
             <div className="min-w-0">
-              <p className="text-[10px] text-muted-foreground">Area</p>
               <p className="text-xs font-medium truncate">{property.sqft} sqft</p>
             </div>
           </div>
         </div>
 
-        <div className="flex items-baseline gap-1.5 pt-1.5 border-t border-border">
+        <div className="flex items-baseline gap-1.5 pt-1 border-t border-border">
           <DollarSign className="w-4 h-4 text-accent flex-shrink-0" />
           <div className="min-w-0">
             <span className="text-xl font-bold text-foreground">₹{property.rent.toLocaleString()}</span>
@@ -83,36 +81,7 @@ export const PropertyCard = ({ property, index }: PropertyCardProps) => {
           </div>
         </div>
 
-        <div className="text-[10px] text-muted-foreground">
-          Deposit: ₹{property.deposit.toLocaleString()}
-        </div>
-
-        {amenitiesList.length > 0 && (
-          <div className="pt-1.5">
-            <p className="text-[10px] text-muted-foreground mb-1.5">Amenities</p>
-            <div className="flex flex-wrap gap-1">
-              {amenitiesList.slice(0, 3).map((amenity, idx) => (
-                <span
-                  key={idx}
-                  className="text-[10px] bg-secondary text-secondary-foreground px-1.5 py-0.5 rounded"
-                >
-                  {amenity}
-                </span>
-              ))}
-              {amenitiesList.length > 3 && (
-                <span className="text-[10px] bg-secondary text-secondary-foreground px-1.5 py-0.5 rounded">
-                  +{amenitiesList.length - 3}
-                </span>
-              )}
-            </div>
-          </div>
-        )}
-
-        <div className="pt-2 border-t border-border">
-          <div className="flex items-center gap-1 text-[10px] text-muted-foreground mb-2">
-            <UserIcon className="w-3 h-3 flex-shrink-0" />
-            <span className="truncate">{property.owner_name}</span>
-          </div>
+        <div className="pt-1.5 border-t border-border">
           <Button
             variant="default"
             size="sm"
