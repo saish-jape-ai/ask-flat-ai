@@ -14,7 +14,7 @@ interface Message {
   listings?: any[];
 }
 
-const API_ENDPOINT = "https://6bf814db47e5.ngrok-free.app/search-flats";
+const API_ENDPOINT = "https://7d6f4fa01c2c.ngrok-free.app/search-flats";
 
 const Index = () => {
   const [messages, setMessages] = useState<Message[]>([]);
