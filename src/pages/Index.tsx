@@ -14,7 +14,7 @@ interface Message {
   listings?: any[];
 }
 
-const API_ENDPOINT = "https://7d6f4fa01c2c.ngrok-free.app/search-flats";
+const API_ENDPOINT = "https://b6cd99dae0fa.ngrok-free.app/search-flats";
 
 const Index = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -55,10 +55,15 @@ const Index = () => {
 
       const data = await response.json();
       
+      // Filter out invalid listings (those with only a message, no actual property data)
+      const validListings = (data.result.listings || []).filter(
+        (listing: any) => listing.rent !== undefined && listing.building_name !== undefined
+      );
+      
       const assistantMessage: Message = {
         role: "assistant",
         content: data.result.message,
-        listings: data.result.listings || [],
+        listings: validListings,
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
