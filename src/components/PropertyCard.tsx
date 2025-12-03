@@ -26,7 +26,7 @@ interface PropertyCardProps {
 }
 
 export const PropertyCard = ({ property, index }: PropertyCardProps) => {
-  const amenitiesList = property.amenities.split(",").map((a) => a.trim());
+  const amenitiesList = property.amenities ? property.amenities.split(",").map((a) => a.trim()) : [];
 
   return (
     <motion.div

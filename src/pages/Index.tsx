@@ -84,7 +84,7 @@ const Index = () => {
         ) : (
           <>
             {messages.map((message, index) => (
-              <div key={index}>
+              <div key={`message-${index}`}>
                 <ChatMessage
                   role={message.role}
                   content={message.content}
@@ -95,7 +95,7 @@ const Index = () => {
                     <ScrollArea className="w-full whitespace-nowrap rounded-lg">
                       <div className="flex gap-3 pb-3">
                         {message.listings.map((listing, listingIndex) => (
-                          <div key={listing.id} className="w-[280px] flex-shrink-0">
+                          <div key={listing.id || `listing-${listingIndex}`} className="w-[280px] flex-shrink-0">
                             <PropertyCard
                               property={listing}
                               index={listingIndex}
