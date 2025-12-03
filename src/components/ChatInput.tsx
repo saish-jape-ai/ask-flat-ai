@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Send } from "lucide-react";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
@@ -10,6 +10,17 @@ interface ChatInputProps {
 
 export const ChatInput = ({ onSend, disabled }: ChatInputProps) => {
   const [input, setInput] = useState("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    textareaRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    if (!disabled) {
+      textareaRef.current?.focus();
+    }
+  }, [disabled]);
 
   const handleSubmit = () => {
     if (input.trim() && !disabled) {
@@ -29,11 +40,13 @@ export const ChatInput = ({ onSend, disabled }: ChatInputProps) => {
     <div className="border-t border-border bg-card p-4">
       <div className="flex gap-2 items-end">
         <Textarea
+          ref={textareaRef}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Ask me about properties... (e.g., '2BHK in Pune under 25k')"
           disabled={disabled}
+          autoFocus
           className="min-h-[44px] max-h-32 resize-none bg-background border-border focus-visible:ring-primary"
           rows={1}
         />
