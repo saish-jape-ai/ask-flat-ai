@@ -75,7 +75,7 @@ const Index = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen max-w-2xl mx-auto bg-background">
+    <div className="flex flex-col h-screen w-full max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto bg-background md:my-4 md:rounded-2xl md:border md:border-border md:shadow-lg md:h-[calc(100vh-2rem)]">
       <ChatHeader />
       
       <div className="flex-1 overflow-y-auto px-4 py-6">
